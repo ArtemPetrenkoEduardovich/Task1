@@ -4,7 +4,33 @@ import java.util.Map;
 class Task {
 
     // Task 1.1
-    // <T> T[] interviewArray(T[] array, int shift)
+    static int[] interviewArray(int[] array, int shift) {
+        int srcArraySize = array.length;
+        int[] resultArray = new int[srcArraySize];
+
+        if (shift == 0)
+            return array;
+        if (shift > 0) {
+            for (int i = 0; i < srcArraySize-shift; i++)
+                resultArray[i] = array[i+shift];
+
+            for (int i = 0; i < shift; i++)
+                resultArray[srcArraySize - shift + i] = array[i];
+        } else {
+            shift *= -1; // or Math.abc()
+            for (int i = 0; i < srcArraySize - shift; i++)
+                resultArray[i + shift] = array[i];
+
+            for (int i = 0; i < shift; i++)
+                resultArray[i] = array[srcArraySize - shift + i];
+        }
+
+        return resultArray;
+    }
+
+
+    // Task 1.1
+    /*
     static int[] interviewArray(int[] array, int shift) {
         int srcArraySize = array.length;
         int[] resultArray = new int[srcArraySize];
@@ -21,6 +47,8 @@ class Task {
 
         return resultArray;
     }
+    */
+
 
     // Task 1.2
     static String interviewRecursion(String line) {
